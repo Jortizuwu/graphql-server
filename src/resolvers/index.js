@@ -1,13 +1,14 @@
-const userMutations = require('./mutations/user')
+const { userMutations, roleMutations } = require('./mutations')
 const userQuery = require('./query/user')
 
 const resolvers = {
   Query: {
-    getUserById: (_, { id }) => userQuery.getUserById(id),
-    getUsers: () => userQuery.getUsers()
+    getUsers: () => userQuery.getUsers(),
+    getUserById: (_, { uid }) => userQuery.getUserById(uid)
   },
   Mutation: {
-    createUser: (_, args) => userMutations.createUser(args)
+    createUser: (_, args) => userMutations.createUser(args),
+    createRole: (_, args) => roleMutations.createRole(args)
   }
 }
 

@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize')
+const { RoleModel } = require('..')
 const { dbconfig } = require('../../db')
 
 const User = dbconfig.define(
@@ -9,17 +10,25 @@ const User = dbconfig.define(
       allowNull: false,
       primaryKey: true
     },
-    nickName: {
+    nick_name: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
+    },
+    role_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        key: 'role_id',
+        model: RoleModel
+      }
     }
   },
-  { tableName: 'user' }
+  { tableName: 'user', timestamps: false }
 )
 
-;(async function main () {
-  await User.sync()
-})()
+// ;(async function main () {
+//   await User.sync()
+// })()
 
 module.exports = User

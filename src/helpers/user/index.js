@@ -1,11 +1,8 @@
 const { UserModel } = require('../../models')
 
-const findUserByNickName = async (nickName) => {
-  return await UserModel.findOne({ where: { nickName } })
-}
+const findUserByNickName = async (nickName) =>
+  await UserModel.findOne({ where: { nick_name: nickName } })
 
-const userExist = async (uid) => {
-  return await UserModel.findByPk(uid)
-}
+const userExist = async (uid) => await UserModel.findByPk(uid)
 
 module.exports = { findUserByNickName, userExist }

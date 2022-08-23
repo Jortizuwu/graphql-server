@@ -1,25 +1,25 @@
 const { DataTypes } = require('sequelize')
 const { dbconfig } = require('../../db')
 
-const Book = dbconfig.define(
-  'Book',
+const Role = dbconfig.define(
+  'Role',
   {
-    book_id: {
+    role_id: {
       type: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true
     },
-    content: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     }
   },
   {
-    tableName: 'book',
+    tableName: 'role',
     timestamps: false
   }
 )
 // ;(async function main () {
-//   await Book.sync()
+//   await Role.sync()
 // })()
-module.exports = Book
+module.exports = Role
